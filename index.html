@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/images/favicon-32x32.png"><meta name="generator" content="Astro v3.0.8"><title>Coding bootcamp testimonials slider</title><style type="text/css">@import"https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap";:root{--Dark-Blue: hsl(240, 38%, 20%);--Grayish-Blue: hsl(240, 18%, 77%)}html{font-family:Inter,sans-serif}body{min-height:50vh;padding:1rem}/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}
+</style><script type="module">const c=document.querySelector(".card-carrousel-slider"),l=document.querySelector(".card-carrousel-info"),s=c.querySelectorAll(".card-carrousel-slider-img"),o=l.querySelectorAll(".user-testimonial"),i=l.querySelectorAll(".user-details"),n=c.querySelector("#prev-btn"),d=c.querySelector("#next-btn"),a=s.length;let e=0;const r=()=>{s.forEach(t=>t.classList.remove("active")),s[e].classList.add("active"),o.forEach(t=>t.classList.remove("active")),o[e].classList.add("active"),i.forEach(t=>t.classList.remove("active")),i[e].classList.add("active")},v=()=>{e++,e>=a&&(e=0),r()},u=()=>{e--,e<0&&(e=a-1),r()};n.addEventListener("click",u);d.addEventListener("click",v);r();
+</script></head><body><main class="container"><article class="card-carrousel"><figure class="card-carrousel-slider"><img class="card-carrousel-slider-img" src="./images/image-tanya.jpg" alt="imagen de Tanya Sinclair"><img class="card-carrousel-slider-img" src="./images/image-john.jpg" alt="imagen de John Tarkpor"><figcaption class="card-carrousel-slider-arrows"><img class="arrow" id="prev-btn" src="./images/icon-prev.svg" alt="icon-prev" role="button"><img class="arrow" id="next-btn" src="./images/icon-next.svg" alt="icon-next" role="button"></figcaption></figure><section class="card-carrousel-info"><img class="quotes" src="./images/pattern-quotes.svg" alt="pattern quotes"><p class="user-testimonial">“ I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future.”</p><div class="user-details"><h2 class="user-name">Tanya Sinclair</h2><p class="user-degree">UX Engineer</p></div><p class="user-testimonial">“ If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer.”</p><div class="user-details"><h2 class="user-name">John Tarkpor</h2><p class="user-degree">Junior Front-end Developer</p></div></section></article></main><footer><p class="footer-text">
+Challenge by <a href="https://www.frontendmentor.io/home" target="_blank" rel="noopener noreferrer">frontend mentor</a>. Coded by Jhon Luna.
+</p></footer></body></html><style>
+  .container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-carrousel-slider {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 224px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-image: url(./images/pattern-bg.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 1.75rem;
+    padding-right: 2.5rem;
+    & .card-carrousel-slider-img {
+      display: none;
+      box-shadow: 1px 1px 5px;
+      border-radius: 1rem;
+    }
+
+    & .card-carrousel-slider-arrows {
+      position: absolute;
+      top: 16rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background-color: white;
+      width: 5rem;
+      height: 2.5rem;
+      border-radius: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      box-shadow: 1px 1px 5px;
+      & .arrow {
+        cursor: pointer;
+      }
+    }
+    & .active {
+      display: block;
+    }
+  }
+
+  .card-carrousel-info {
+    position: relative;
+    margin-top: 2.25rem;
+    padding: 1.5rem 4px 0;
+    & .quotes {
+      width: 4rem;
+      position: absolute;
+      inset: 0;
+      margin: 0 auto;
+    }
+    & .user-testimonial {
+      display: none;
+      font-size: 1.125rem;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5rem;
+      text-align: center;
+      color: var(--Dark-Blue);
+      font-weight: 300;
+    }
+
+    & .user-details {
+      display: none;
+      & .user-name,
+      .user-degree {
+        font-size: 0.875rem;
+        text-align: center;
+        margin: 0;
+      }
+      & .user-name {
+        color: var(--Dark-Blue);
+      }
+      .user-degree {
+        color: var(--Grayish-Blue);
+      }
+    }
+
+    & .active {
+      display: block;
+    }
+  }
+
+  .footer-text {
+    font-size: 1rem;
+    text-align: center;
+    & a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .card-carrousel-slider {
+      max-width: 320px;
+      & .card-carrousel-slider-arrows {
+        top: 22rem;
+      }
+    }
+    .card-carrousel-info {
+      & .user-testimonial {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+      & .user-details {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        & .user-name,
+        .user-degree {
+          font-size: 1.25rem;
+          text-align: center;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 896px) {
+    .card-carrousel {
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 2rem;
+      max-width: 832px;
+      width: 100%;
+    }
+    .card-carrousel-slider {
+      max-width: 375px;
+      padding-top: 2.25rem;
+      padding-right: 4rem;
+      & .card-carrousel-slider-arrows {
+        margin: unset;
+        top: 24rem;
+        left: 3rem;
+      }
+    }
+    .card-carrousel-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      left: 4rem;
+      & .quotes {
+        width: 7rem;
+        margin: 0;
+        left: 4rem;
+      }
+      & .user-testimonial {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        text-align: left;
+        width: 25ch;
+      }
+      & .active {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+</style>
