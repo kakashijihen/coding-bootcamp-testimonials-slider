@@ -1,0 +1,241 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { students } from "../js/students";
+import "../styles/normalize.css";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Coding bootcamp testimonials slider" lang="es">
+  <main class="container">
+    <Card classCard="card-carrousel">
+      <figure class="card-carrousel-slider">
+        {
+          students.map((item) => (
+            <img
+              class="card-carrousel-slider-img"
+              src={item.imageUrl}
+              alt={`imagen de ${item.name}`}
+            />
+          ))
+        }
+        <figcaption class="card-carrousel-slider-arrows">
+          <img
+            class="arrow"
+            id="prev-btn"
+            src="./images/icon-prev.svg"
+            alt="icon-prev"
+            role="button"
+          />
+          <img
+            class="arrow"
+            id="next-btn"
+            src="./images/icon-next.svg"
+            alt="icon-next"
+            role="button"
+          />
+        </figcaption>
+      </figure>
+      <section class="card-carrousel-info">
+        <img
+          class="quotes"
+          src="./images/pattern-quotes.svg"
+          alt="pattern quotes"
+        />
+        {
+          students.map((item) => (
+            <>
+              <p class="user-testimonial">{item.testimonial}</p>
+              <div class="user-details">
+                <h2 class="user-name">{item.name}</h2>
+                <p class="user-degree">{item.degree}</p>
+              </div>
+            </>
+          ))
+        }
+      </section>
+    </Card>
+  </main>
+  <footer>
+    <p class="footer-text">
+      Challenge by <a
+        href="https://www.frontendmentor.io/home"
+        target="_blank"
+        rel="noopener noreferrer">frontend mentor</a
+      >. Coded by Jhon Luna.
+    </p>
+  </footer>
+</Layout>
+
+<style is:inline>
+  .container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-carrousel-slider {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 224px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-image: url(./images/pattern-bg.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 1.75rem;
+    padding-right: 2.5rem;
+    & .card-carrousel-slider-img {
+      display: none;
+      box-shadow: 1px 1px 5px;
+      border-radius: 1rem;
+    }
+
+    & .card-carrousel-slider-arrows {
+      position: absolute;
+      top: 16rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background-color: white;
+      width: 5rem;
+      height: 2.5rem;
+      border-radius: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      box-shadow: 1px 1px 5px;
+      & .arrow {
+        cursor: pointer;
+      }
+    }
+    & .active {
+      display: block;
+    }
+  }
+
+  .card-carrousel-info {
+    position: relative;
+    margin-top: 2.25rem;
+    padding: 1.5rem 4px 0;
+    & .quotes {
+      width: 4rem;
+      position: absolute;
+      inset: 0;
+      margin: 0 auto;
+    }
+    & .user-testimonial {
+      display: none;
+      font-size: 1.125rem;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5rem;
+      text-align: center;
+      color: var(--Dark-Blue);
+      font-weight: 300;
+    }
+
+    & .user-details {
+      display: none;
+      & .user-name,
+      .user-degree {
+        font-size: 0.875rem;
+        text-align: center;
+        margin: 0;
+      }
+      & .user-name {
+        color: var(--Dark-Blue);
+      }
+      .user-degree {
+        color: var(--Grayish-Blue);
+      }
+    }
+
+    & .active {
+      display: block;
+    }
+  }
+
+  .footer-text {
+    font-size: 1rem;
+    text-align: center;
+    & a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .card-carrousel-slider {
+      max-width: 320px;
+      & .card-carrousel-slider-arrows {
+        top: 22rem;
+      }
+    }
+    .card-carrousel-info {
+      & .user-testimonial {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+      & .user-details {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        & .user-name,
+        .user-degree {
+          font-size: 1.25rem;
+          text-align: center;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 896px) {
+    .card-carrousel {
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 2rem;
+      max-width: 832px;
+      width: 100%;
+    }
+    .card-carrousel-slider {
+      max-width: 375px;
+      padding-top: 2.25rem;
+      padding-right: 4rem;
+      & .card-carrousel-slider-arrows {
+        margin: unset;
+        top: 24rem;
+        left: 3rem;
+      }
+    }
+    .card-carrousel-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      left: 4rem;
+      & .quotes {
+        width: 7rem;
+        margin: 0;
+        left: 4rem;
+      }
+      & .user-testimonial {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        text-align: left;
+        width: 25ch;
+      }
+      & .active {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+</style>
+
+<script src="../js/slider.js"></script>
